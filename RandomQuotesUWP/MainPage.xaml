@@ -16,7 +16,8 @@
                         <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="Quote.FontSize" Value="25" />
+                        <Setter Target="Quote.FontSize" Value="35" />
+                        <Setter Target="Quote.VerticalAlignment" Value="Top" />
                         <Setter Target="Author.FontSize" Value="25" />
                         <!--<Setter Target="Author.Margin" Value="45,90,0,40"/>-->
                         <Setter Target="Author.HorizontalAlignment" Value="Center"/>
@@ -25,6 +26,8 @@
                         <Setter Target="NewQuote.HorizontalAlignment" Value="Center"/>
                         <Setter Target="NewQuote.VerticalAlignment" Value="Bottom"/>
                         <Setter Target="QuoteGrid.Height" Value="400"/>
+                        <Setter Target="Read.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="Read.HorizontalAlignment" Value="Center" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateDesktop">
@@ -51,7 +54,7 @@
                 TextAlignment="Center"
                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
                 />
-            <Button x:Name="Read" Click="Read_Click" FontFamily="Segoe MDL2 Assets" Content="&#xE767;" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Height="63" Width="70" ></Button>
+            <Button x:Name="Read" Click="Read_Click" FontFamily="Segoe MDL2 Assets" Content="&#xE767;" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="63" Width="70" ></Button>
 
         </Grid>
 

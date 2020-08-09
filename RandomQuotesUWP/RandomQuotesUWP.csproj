@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{AEDABDE9-F91C-4871-9DD4-B28203C2CAFE}</ProjectGuid>
+    <ProjectGuid>{B07FA557-19FD-49A9-A31E-E65C0C810CC5}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RandomQuotesUWP</RootNamespace>
@@ -20,7 +20,7 @@
     <PackageCertificateKeyFile>RandomQuotesUWP_StoreKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>D351BF946BA884427275F6B5642CC4DF593C355A</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
