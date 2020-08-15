@@ -2,4 +2,4 @@ This is the app version of the web project : https://github.com/ryaliscs/randomQ
 
 This app is a native Windows 10 application build with the UWP framework using XAML and C#
 
-The app will soon be available on the Microsoft Store
+Get it from the Microsoft Store: https://www.microsoft.com/en-us/p/random-quotes-for-uwp/9nbnbq1vv68s?activetab=pivot:overviewtab
