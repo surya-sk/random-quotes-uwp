@@ -6,69 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="Black">
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="VisualStateGroup">
-                <VisualState x:Name="VisualStateMobile">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="Quote.FontSize" Value="35" />
-                        <Setter Target="Quote.VerticalAlignment" Value="Top" />
-                        <Setter Target="Author.FontSize" Value="25" />
-                        <!--<Setter Target="Author.Margin" Value="45,90,0,40"/>-->
-                        <Setter Target="Author.HorizontalAlignment" Value="Center"/>
-                        <Setter Target="Author.VerticalAlignment" Value="Top"/>
-                        <!--<Setter Target="Button.Margin" Value="45,70,0,20"/>-->
-                        <Setter Target="NewQuote.HorizontalAlignment" Value="Center"/>
-                        <Setter Target="NewQuote.VerticalAlignment" Value="Bottom"/>
-                        <Setter Target="QuoteGrid.Height" Value="400"/>
-                        <Setter Target="Read.VerticalAlignment" Value="Bottom"/>
-                        <Setter Target="Read.HorizontalAlignment" Value="Center" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="VisualStateDesktop">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="800"></AdaptiveTrigger>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="Quote.FontSize" Value="60" />
-                        <Setter Target="Author.FontSize" Value="40" />
-                        <!--<Setter Target="Author.Margin" Value="0,0,3,48"/>-->
-                        <Setter Target="Author.HorizontalAlignment" Value="Right"/>
-                        <Setter Target="Author.VerticalAlignment" Value="Center"/>
-                        <!--<Setter Target="Button.Margin" Value="40,19,0,0"/>-->
-                        <Setter Target="NewQuote.HorizontalAlignment" Value="Left" />
-                        <Setter Target="NewQuote.VerticalAlignment" Value="Center"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-        <Grid x:Name="QuoteGrid" Background="Black" VerticalAlignment="Center" Height="850">
-            <TextBlock
-                x:Name="Quote"
-                Foreground="White"
-                TextAlignment="Center"
-                VerticalAlignment="Center" HorizontalAlignment="Stretch"
-                />
-            <Button x:Name="Read" Click="Read_Click" FontFamily="Segoe MDL2 Assets" Content="&#xE767;" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Height="63" Width="70" ></Button>
-
-        </Grid>
-
-        <Grid Name="AuthorGrid" Background="{ThemeResource SystemAccentColor}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
-
-            <TextBlock
-                x:Name="Author"
-                Foreground="Black"
-                
-              />
-
-            <Button x:Name="NewQuote" Content="New Quote" Foreground="Black" Click="NewQuote_Click" Margin="0,55,0,30" Width="150" Height="60"/>
-        </Grid>
-
-
+        <muxc:NavigationView Name="NavView" PaneDisplayMode="LeftCompact" ItemInvoked="NavView_ItemInvoked" IsBackButtonVisible="Collapsed">
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Name="QuoteButton" Content="Quote" SelectsOnInvoked="True" PointerPressed="QuoteButton_PointerPressed" IsSelected="True">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE15F;"/>
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+            </muxc:NavigationView.MenuItems>
+            <Frame Name="ContentFrame"/>
+        </muxc:NavigationView>
     </Grid>
 </Page>
