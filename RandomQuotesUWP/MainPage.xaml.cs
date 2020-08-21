@@ -30,23 +30,27 @@ namespace RandomQuotesUWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public static bool IsVisible;
         public MainPage()
         {
             this.InitializeComponent();
             ContentFrame.Navigate(typeof(QuotePage));
         }
 
-        private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
-        {
-            if(args.IsSettingsInvoked)
-            {
-                ContentFrame.Navigate(typeof(SettingsPage));
-            }
-        }
+        //private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
+        //{
+        //    if(args.IsSettingsInvoked)
+        //    {
+        //        ContentFrame.Navigate(typeof(SettingsPage));
+        //    }
+        //}
 
-        private void QuoteButton_PointerPressed(object sender, PointerRoutedEventArgs e)
-        {
-            ContentFrame.Navigate(typeof(QuotePage));
-        }
+        //private void QuoteButton_PointerPressed(object sender, PointerRoutedEventArgs e)
+        //{
+        //    ContentFrame.Navigate(typeof(QuotePage));
+        //}
+
+
+
     }
 }

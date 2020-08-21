@@ -26,6 +26,7 @@ namespace RandomQuotesUWP
         public SettingsPage()
         {
             this.InitializeComponent();
+
         }
 
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
@@ -36,6 +37,16 @@ namespace RandomQuotesUWP
         private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
         {
             ((ToggleSwitch)sender).IsOn = App.Current.RequestedTheme == ApplicationTheme.Light;
+        }
+
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.Frame.CanGoBack)
+            {
+                MainPage.IsVisible = true;
+                this.Frame.GoBack();
+            }
         }
     }
 }

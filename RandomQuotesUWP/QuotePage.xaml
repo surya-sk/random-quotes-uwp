@@ -17,17 +17,14 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Quote.FontSize" Value="35" />
-                        <Setter Target="Quote.VerticalAlignment" Value="Top" />
                         <Setter Target="Author.FontSize" Value="25" />
-                        <!--<Setter Target="Author.Margin" Value="45,90,0,40"/>-->
-                        <Setter Target="Author.HorizontalAlignment" Value="Center"/>
-                        <Setter Target="Author.VerticalAlignment" Value="Top"/>
-                        <!--<Setter Target="Button.Margin" Value="45,70,0,20"/>-->
-                        <Setter Target="NewQuote.HorizontalAlignment" Value="Center"/>
-                        <Setter Target="NewQuote.VerticalAlignment" Value="Bottom"/>
                         <Setter Target="QuoteGrid.Height" Value="400"/>
-                        <Setter Target="Read.VerticalAlignment" Value="Bottom"/>
-                        <Setter Target="Read.HorizontalAlignment" Value="Center" />
+                        <Setter Target="Author.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="ReadAloud.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="Author.(Grid.Row)" Value="0"/>
+                        <Setter Target="ReadAloud.(Grid.Row)" Value="1"/>
+                        <Setter Target="Author.(Grid.Column)" Value="1"/>
+                        <Setter Target="ReadAloud.(Grid.Column)" Value="1"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateDesktop">
@@ -37,36 +34,42 @@
                     <VisualState.Setters>
                         <Setter Target="Quote.FontSize" Value="60" />
                         <Setter Target="Author.FontSize" Value="40" />
-                        <!--<Setter Target="Author.Margin" Value="0,0,3,48"/>-->
+                        <Setter Target="Author.(Grid.Column)" Value="2"/>
+                        <Setter Target="ReadAloud.(Grid.Column)" Value="0"/>
                         <Setter Target="Author.HorizontalAlignment" Value="Right"/>
-                        <Setter Target="Author.VerticalAlignment" Value="Center"/>
-                        <!--<Setter Target="Button.Margin" Value="40,19,0,0"/>-->
-                        <Setter Target="NewQuote.HorizontalAlignment" Value="Left" />
-                        <Setter Target="NewQuote.VerticalAlignment" Value="Center"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid x:Name="QuoteGrid" VerticalAlignment="Center" Height="850">
-            <TextBlock
-                x:Name="Quote"
-                TextAlignment="Center"
-                VerticalAlignment="Center" HorizontalAlignment="Stretch"
-                />
-            <Button x:Name="Read" Click="Read_Click" FontFamily="Segoe MDL2 Assets" Content="&#xE767;" HorizontalAlignment="Left" VerticalAlignment="Center" Height="63" Width="70" ></Button>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Name="QuoteGrid">
+            <TextBlock x:Name="Quote" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Name="AuthorGrid" Grid.Row="1" Background="{ThemeResource SystemAccentColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="Author" />
+            <Button Name="ReadAloud" Click="Read_Click">
+                <RelativePanel>
+                    <FontIcon Name="ReadIcon" Glyph="&#xE15D;"/>
+                    <TextBlock Text=" Read Aloud" RelativePanel.RightOf="ReadIcon"/>
+                </RelativePanel>
+            </Button>
         </Grid>
 
-        <Grid Name="AuthorGrid" Background="{ThemeResource SystemAccentColor}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
-
-            <TextBlock
-                x:Name="Author"
-                Foreground="Black"
-                
-              />
-
-            <Button x:Name="NewQuote" Content="New Quote" Foreground="Black" Click="NewQuote_Click" Margin="0,55,0,30" Width="150" Height="60"/>
-        </Grid>
-
+        <CommandBar x:Name="CmdBar" x:FieldModifier="public" Grid.Row="2">
+            <AppBarButton Icon="Setting" Label="Settings" Click="AppBarButton_Click"/>
+        </CommandBar>
     </Grid>
 </Page>

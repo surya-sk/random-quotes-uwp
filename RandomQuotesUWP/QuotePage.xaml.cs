@@ -86,10 +86,6 @@ namespace RandomQuotesUWP
                 //Author.Text = quotes.by;
 
             }
-
-
-
-
             return quotes;
 
         }
@@ -131,15 +127,7 @@ namespace RandomQuotesUWP
             public string quote { get; set; }
             public string by { get; set; }
         }
-        /// <summary>
-        /// When clicked, gets a new quote
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NewQuote_Click(object sender, RoutedEventArgs e)
-        {
-            //
-        }
+
 
 
 
@@ -260,5 +248,9 @@ namespace RandomQuotesUWP
             TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotif);
         }
 
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SettingsPage));
+        }
     }
 }
