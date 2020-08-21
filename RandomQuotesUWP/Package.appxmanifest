@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
   <Identity Name="37533SuryaKashyap.RandomQuotesforUWP" Publisher="CN=7115D965-9BEF-4D32-9397-2F0F733B3D6D" Version="1.0.1.0" />
-  <mp:PhoneIdentity PhoneProductId="962843d1-e0cb-4468-a6e9-ba7735b31b04" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <mp:PhoneIdentity PhoneProductId="fe2d7a6f-539b-495e-8d3c-2bbbd74f32ef" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Random Quotes for UWP</DisplayName>
     <PublisherDisplayName>Surya Kashyap</PublisherDisplayName>
