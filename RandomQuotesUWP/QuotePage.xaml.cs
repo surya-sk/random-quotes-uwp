@@ -29,19 +29,20 @@ namespace RandomQuotesUWP
     {
         Quotes quotes = new Quotes();
         HttpClient client;
-
+        DispatcherTimer dispatcherTimer;
         string url = "https://yourrandomquotes.herokuapp.com/quote";//tp://localhost:8081/quote";
 
         public QuotePage()
         {
             this.InitializeComponent();
             client = new HttpClient();
-
             client.BaseAddress = new Uri(url);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             LoadQuote();
             UpdateLiveTile();
+
+            DispatcherTimerSetup();
         }
 
 
@@ -137,8 +138,7 @@ namespace RandomQuotesUWP
         /// <param name="e"></param>
         private void NewQuote_Click(object sender, RoutedEventArgs e)
         {
-            LoadQuote();
-            UpdateLiveTile();
+            //
         }
 
 
@@ -150,7 +150,6 @@ namespace RandomQuotesUWP
         private void LoadQuote()
         {
             quotes = GetResponse().Result;
-
             Quote.Text = quotes.quote;
             Author.Text = quotes.by;
 
@@ -159,6 +158,23 @@ namespace RandomQuotesUWP
                 Quote.TextWrapping = TextWrapping.Wrap;
             }
         }
+
+        private void DispatcherTimerSetup()
+        {
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += dispatcher_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Start();
+            
+        }
+
+        private void dispatcher_Tick(object sender, object e)
+        {
+            LoadQuote();
+            UpdateLiveTile();
+                
+        }
+        
 
         /// <summary>
         /// Reads the quote aloud
