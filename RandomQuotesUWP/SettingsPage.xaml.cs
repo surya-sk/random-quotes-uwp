@@ -44,7 +44,6 @@ namespace RandomQuotesUWP
         {
             if(this.Frame.CanGoBack)
             {
-                MainPage.IsVisible = true;
                 this.Frame.GoBack();
             }
         }

@@ -10,16 +10,46 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <!--<muxc:NavigationView x:Name="NavView" PaneDisplayMode="LeftCompact" ItemInvoked="NavView_ItemInvoked" IsBackButtonVisible="Collapsed">
-            <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem x:Name="QuoteButton" Content="Quote" SelectsOnInvoked="True" PointerPressed="QuoteButton_PointerPressed" IsSelected="True">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xE15F;"/>
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
-            </muxc:NavigationView.MenuItems>
-            <Frame x:Name="ContentFrame"/>
-        </muxc:NavigationView>-->
-        <Frame x:Name="ContentFrame"/>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualStateMobile">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Quote.FontSize" Value="35" />
+                        <Setter Target="Author.FontSize" Value="25" />
+                        <Setter Target="QuoteGrid.Height" Value="400"/>
+                        <Setter Target="Author.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="Author.VerticalAlignment" Value="Center"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateDesktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Quote.FontSize" Value="60" />
+                        <Setter Target="Author.FontSize" Value="40" />
+                        <Setter Target="Author.HorizontalAlignment" Value="Right"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="QuoteGrid">
+            <TextBlock x:Name="Quote" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="AuthorGrid" Grid.Row="1" Background="{ThemeResource SystemAccentColor}">
+            <TextBlock Name="Author"/>
+        </Grid>
+        <CommandBar Grid.Row="2">
+            <AppBarButton x:Name="ReadAloudButton" Icon="Volume" Label="Read Quote" Click="ReadAloudButton_Click"/>
+            <AppBarButton x:Name="SettingsButton" Icon="Setting" Label="Settings" Click="SettingsButton_Click"/>
+        </CommandBar>
     </Grid>
 </Page>

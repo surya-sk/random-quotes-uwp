@@ -8,21 +8,24 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Margin="20,0,0,0">
+    <Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" Spacing="30">
+        <StackPanel Orientation="Vertical">
             <Button x:Name="BackButton" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" VerticalAlignment="Top" Content="&#xE0A6;" Click="BackButton_Click"/>
-            <TextBlock Text="Settings" FontSize="56" Margin="0,20,0,20"/>
+            <TextBlock Text="Settings" FontSize="56" Margin="20,20,0,20"/>
         </StackPanel>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1">
-            <StackPanel Orientation="Vertical" Spacing="30">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="20,0,0,0">
+            <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                <StackPanel.Resources>
+                    <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
+                </StackPanel.Resources>
                 <ToggleSwitch Header="Theme (restart required)" OnContent="Light" OffContent="Dark" Toggled="ToggleSwitch_Toggled" Loaded="ToggleSwitch_Loaded" Grid.Row="1"/>
-                <StackPanel Spacing="10">
+                <StackPanel Margin="0,20,0,0">
                     <TextBlock Text="About" FontSize="40"/>
                     <TextBlock Text="" />
                     <TextBlock Text="This project is the application version of the web app yourrandomquotes." TextWrapping="WrapWholeWords"/>
@@ -49,9 +52,8 @@
                     </TextBlock>
                 </StackPanel>
 
-                <StackPanel Spacing="10">
-                    <TextBlock Text="Related Settings" />
-                    <TextBlock Text="" />
+                <StackPanel Margin="0,20,0,0">
+                    <TextBlock Text="Related Settings" FontSize="40" Margin="0,0,0,20"/>
                     <TextBlock TextWrapping="Wrap">
                 <Hyperlink NavigateUri="ms-settings:colors">
                     <Run Text="Windows colour settings"/>
