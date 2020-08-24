@@ -28,27 +28,27 @@
                 <StackPanel Margin="0,20,0,0">
                     <TextBlock Text="About" FontSize="40"/>
                     <TextBlock Text="" />
-                    <TextBlock Text="This project is the application version of the web app yourrandomquotes." TextWrapping="WrapWholeWords"/>
-                    <TextBlock Text="Both the app and yourrandomquotes are free and open-source." TextWrapping="WrapWholeWords"/>
+                    <TextBlock Text="This project is the application version of the web app yourrandomquotes." TextWrapping="Wrap"/>
+                    <TextBlock Text="Both the app and yourrandomquotes are free and open-source." TextWrapping="Wrap"/>
                     <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
-                <Hyperlink NavigateUri="https://github.com/surya-sk/random-quotes-windows">
-                    <Run Text="Github repository for this app" />
-                </Hyperlink>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
-                <Hyperlink NavigateUri="https://github.com/ryaliscs/randomQuotes">
-                    <Run Text="Github repository for yourrandomquotes" />
-                </Hyperlink>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
-                <Hyperlink NavigateUri="http://yourrandomquotes.herokuapp.com/">
-                    <Run Text="Visit yourrandomquotes" />
-                </Hyperlink>
-                    </TextBlock>
-                    <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
-                <Hyperlink x:Name="MailLink" NavigateUri="mailto:surya.sk05@outlook.com">
-                    <Run Text="Contact developer" />
-                </Hyperlink>
+                        <Hyperlink NavigateUri="https://github.com/surya-sk/random-quotes-windows">
+                            <Run Text="Github repository for this app" />
+                        </Hyperlink>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
+                        <Hyperlink NavigateUri="https://github.com/ryaliscs/randomQuotes">
+                            <Run Text="Github repository for yourrandomquotes" />
+                        </Hyperlink>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
+                        <Hyperlink NavigateUri="http://yourrandomquotes.herokuapp.com/">
+                            <Run Text="Visit yourrandomquotes" />
+                        </Hyperlink>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
+                        <Hyperlink x:Name="MailLink" NavigateUri="mailto:surya.sk05@outlook.com">
+                            <Run Text="Contact developer" />
+                        </Hyperlink>
                     </TextBlock>
                 </StackPanel>
 
