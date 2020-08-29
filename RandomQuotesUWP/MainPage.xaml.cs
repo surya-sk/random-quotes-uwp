@@ -141,7 +141,7 @@ namespace RandomQuotesUWP
         {
             dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcher_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 60);
             dispatcherTimer.Start();
 
         }
