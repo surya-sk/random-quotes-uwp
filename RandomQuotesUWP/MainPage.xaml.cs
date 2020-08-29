@@ -20,6 +20,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Notifications;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Windows.UI.Composition;
+using System.ComponentModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -33,6 +34,7 @@ namespace RandomQuotesUWP
         Quotes quotes = new Quotes();
         HttpClient client;
         DispatcherTimer dispatcherTimer;
+        bool ReadQuote;
         string url = "https://yourrandomquotes.herokuapp.com/quote";//tp://localhost:8081/quote";
         public MainPage()
         {
@@ -57,11 +59,11 @@ namespace RandomQuotesUWP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void ReadAloudButton_Click(object sender, RoutedEventArgs e)
+        private async void ReadAloud()
         {
             MediaElement mediaElement = new MediaElement();
             var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
-            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(quotes.quote);
+            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(quotes.Quote);
             mediaElement.SetSource(stream, stream.ContentType);
             mediaElement.Play();
         }
@@ -93,10 +95,26 @@ namespace RandomQuotesUWP
         /// <summary>
         /// A class that helps in parsing the JSON strings to simplify access in other methods
         /// </summary>
-        public class Quotes
+        public class Quotes : INotifyPropertyChanged
         {
-            public string quote { get; set; }
-            public string by { get; set; }
+            private string quote;
+            private string by;
+
+            public string By
+            { get => by; set
+                {
+                    by = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(By)));
+                }
+            }
+            public string Quote { get => quote; set
+                {
+                    quote = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Quote)));
+                }
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
         }
 
         /// <summary>
@@ -105,12 +123,14 @@ namespace RandomQuotesUWP
         private void LoadQuote()
         {
             quotes = GetResponse().Result;
-            Quote.Text = quotes.quote;
-            Author.Text = quotes.by;
-
-            if (quotes.quote.Length < 300)
+            DataContext = new Quotes() { By = quotes.By, Quote = quotes.Quote };
+            if (quotes.Quote.Length < 300)
             {
                 Quote.TextWrapping = TextWrapping.Wrap;
+            }
+            if(ReadQuote)
+            {
+                ReadAloud();
             }
         }
 
@@ -158,7 +178,7 @@ namespace RandomQuotesUWP
                     },
                     new AdaptiveText()
                     {
-                        Text = quotes.by,
+                        Text = quotes.By,
                         HintStyle = AdaptiveTextStyle.CaptionSubtle
                     }
                 }
@@ -178,12 +198,12 @@ namespace RandomQuotesUWP
                     },
                     new AdaptiveText()
                     {
-                        Text = quotes.by,
+                        Text = quotes.By,
                         HintStyle = AdaptiveTextStyle.CaptionSubtle
                     },
                     new AdaptiveText()
                     {
-                        Text = quotes.quote,
+                        Text = quotes.Quote,
                         HintStyle = AdaptiveTextStyle.CaptionSubtle,
                         HintMinLines = 2,
                         HintMaxLines = 4,
@@ -200,6 +220,17 @@ namespace RandomQuotesUWP
 
             // And send the notification to the primary tile
             TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotif);
+        }
+
+        private void ReadAloudButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ReadQuote = true;
+            ReadAloud();
+        }
+
+        private void ReadAloudButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ReadQuote = false;
         }
     }
 }

@@ -42,13 +42,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid x:Name="QuoteGrid">
-            <TextBlock x:Name="Quote" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="Quote" Text="{Binding Quote}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
         <Grid x:Name="AuthorGrid" Grid.Row="1" Background="{ThemeResource SystemAccentColor}">
-            <TextBlock Name="Author"/>
+            <TextBlock Name="Author" Text="{Binding By}"/>
         </Grid>
         <CommandBar Grid.Row="2">
-            <AppBarButton x:Name="ReadAloudButton" Icon="Volume" Label="Read Quote" Click="ReadAloudButton_Click"/>
+            <AppBarToggleButton x:Name="ReadAloudButton" Icon="Volume" Label="Read Quote" Checked="ReadAloudButton_Checked" Unchecked="ReadAloudButton_Unchecked"/>
             <AppBarButton x:Name="SettingsButton" Icon="Setting" Label="Settings" Click="SettingsButton_Click"/>
         </CommandBar>
     </Grid>
