@@ -32,6 +32,7 @@
                         <Setter Target="Quote.FontSize" Value="60" />
                         <Setter Target="Author.FontSize" Value="40" />
                         <Setter Target="Author.HorizontalAlignment" Value="Right"/>
+                        <Setter Target="Author.Margin" Value="0,0,20,0"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

@@ -10,57 +10,98 @@
 
     <Grid>
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualStateMobile">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RelatedPanel.(Grid.Column)" Value="0"/>
+                        <Setter Target="RelatedPanel.(Grid.Row)" Value="1"/>
+                        <Setter Target="RelatedPanel.HorizontalAlignment" Value="Left"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateDesktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RelatedPanel.(Grid.Column)" Value="1"/>
+                        <Setter Target="RelatedPanel.(Grid.Row)" Value="0"/>
+                        <Setter Target="RelatedPanel.HorizontalAlignment" Value="Right"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+     
+        
         <StackPanel Orientation="Vertical">
             <Button x:Name="BackButton" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" VerticalAlignment="Top" Content="&#xE0A6;" Click="BackButton_Click"/>
             <TextBlock Text="Settings" FontSize="56" Margin="20,20,0,20"/>
         </StackPanel>
 
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="20,0,0,0">
-            <StackPanel Orientation="Vertical" Margin="0,20,0,0">
-                <StackPanel.Resources>
-                    <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
-                </StackPanel.Resources>
-                <ToggleSwitch Header="Theme (restart required)" OnContent="Light" OffContent="Dark" Toggled="ToggleSwitch_Toggled" Loaded="ToggleSwitch_Loaded" Grid.Row="1"/>
-                <StackPanel Margin="0,20,0,0">
-                    <TextBlock Text="About" FontSize="40"/>
-                    <TextBlock Text="" />
-                    <TextBlock Text="This project is the application version of the web app yourrandomquotes." TextWrapping="Wrap"/>
-                    <TextBlock Text="Both the app and yourrandomquotes are free and open-source." TextWrapping="Wrap"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                    <ToggleSwitch Header="Theme (restart required)" OnContent="Light" OffContent="Dark" Toggled="ToggleSwitch_Toggled" Loaded="ToggleSwitch_Loaded" Grid.Row="1"/>
+                    <StackPanel Margin="0,20,0,0">
+                        <TextBlock Text="About" FontSize="40"/>
+                        <TextBlock Text="" />
+                        <TextBlock Text="This project is the application version of the web app yourrandomquotes." TextWrapping="Wrap"/>
+                        <TextBlock Text="Both the app and yourrandomquotes are free and open-source." TextWrapping="Wrap"/>
+                        <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
                         <Hyperlink NavigateUri="https://github.com/surya-sk/random-quotes-windows">
                             <Run Text="Github repository for this app" />
                         </Hyperlink>
-                            </TextBlock>
-                            <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
                         <Hyperlink NavigateUri="https://github.com/ryaliscs/randomQuotes">
                             <Run Text="Github repository for yourrandomquotes" />
                         </Hyperlink>
-                            </TextBlock>
-                            <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
                         <Hyperlink NavigateUri="http://yourrandomquotes.herokuapp.com/">
                             <Run Text="Visit yourrandomquotes" />
                         </Hyperlink>
-                            </TextBlock>
-                            <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
                         <Hyperlink x:Name="MailLink" NavigateUri="mailto:surya.sk05@outlook.com">
                             <Run Text="Contact developer" />
                         </Hyperlink>
-                    </TextBlock>
+                        </TextBlock>
+                    </StackPanel>
                 </StackPanel>
-
-                <StackPanel Margin="0,20,0,0">
-                    <TextBlock Text="Related Settings" FontSize="40" Margin="0,0,0,20"/>
+                <StackPanel x:Name="RelatedPanel" Margin="0,20,0,0" Orientation="Vertical">
+                    <TextBlock Text="Related Settings" FontSize="40" Margin="0,0,20,20"/>
                     <TextBlock TextWrapping="Wrap">
-                <Hyperlink NavigateUri="ms-settings:colors">
-                    <Run Text="Windows colour settings"/>
-                </Hyperlink>
+                        <Hyperlink NavigateUri="ms-settings:colors">
+                            <Run Text="Windows colour settings"/>
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
+                        <Hyperlink NavigateUri="ms-settings:speech">
+                            <Run Text="Speech settings"/>
+                        </Hyperlink>
                     </TextBlock>
                 </StackPanel>
-            </StackPanel>
+            </Grid>
         </ScrollViewer>
     </Grid>
 </Page>
