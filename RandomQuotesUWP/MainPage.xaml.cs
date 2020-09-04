@@ -60,8 +60,11 @@ namespace RandomQuotesUWP
                 LoadQuote();
                 UpdateLiveTile();
                 string value = (string)localSettings.Values["interval"];
-                string[] temp = value.Split(' ');
-                interval = Convert.ToInt16(temp[0]);
+                if(value!=null)
+                {
+                    string[] temp = value.Split(' ');
+                    interval = Convert.ToInt16(temp[0]);
+                }
                 DispatcherTimerSetup();
             }
         }
