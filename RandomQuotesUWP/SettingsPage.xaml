@@ -54,7 +54,7 @@
                 
                 <StackPanel Orientation="Vertical" Margin="0,20,0,0">
                     <ToggleSwitch Header="Theme (restart required)" OnContent="Light" OffContent="Dark" Toggled="ToggleSwitch_Toggled" Loaded="ToggleSwitch_Loaded" Grid.Row="1"/>
-                    <ComboBox x:Name="IntervalInput" SelectionChanged="IntervalInput_SelectionChanged" Header="Show a new quote every*: " PlaceholderText="Choose interval" Margin="0,20,0,10">
+                    <ComboBox x:Name="IntervalInput" SelectionChanged="IntervalInput_SelectionChanged" Header="Show a new quote every*: "  Margin="0,20,0,10">
                         <x:String>30 seconds</x:String>
                         <x:String>60 seconds</x:String>
                         <x:String>120 seconds</x:String>

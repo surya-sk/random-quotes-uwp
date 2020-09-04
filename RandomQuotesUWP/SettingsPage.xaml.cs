@@ -25,10 +25,19 @@ namespace RandomQuotesUWP
     public sealed partial class SettingsPage : Page
     {
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        string SelectedInterval;
         public SettingsPage()
         {
             this.InitializeComponent();
-
+            SelectedInterval = (string)localSettings.Values["interval"];
+            if(SelectedInterval==null)
+            {
+                IntervalInput.PlaceholderText = "Choose interval";
+            }
+            else
+            {
+                IntervalInput.PlaceholderText = SelectedInterval;
+            }
         }
 
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
