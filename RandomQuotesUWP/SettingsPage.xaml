@@ -17,7 +17,6 @@
                         <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="RelatedPanel.(Grid.Column)" Value="0"/>
                         <Setter Target="RelatedPanel.(Grid.Row)" Value="1"/>
                         <Setter Target="RelatedPanel.HorizontalAlignment" Value="Left"/>
                     </VisualState.Setters>
@@ -27,7 +26,6 @@
                         <AdaptiveTrigger MinWindowWidth="800"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="RelatedPanel.(Grid.Column)" Value="1"/>
                         <Setter Target="RelatedPanel.(Grid.Row)" Value="0"/>
                         <Setter Target="RelatedPanel.HorizontalAlignment" Value="Right"/>
                     </VisualState.Setters>
@@ -54,13 +52,17 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                
                 <StackPanel Orientation="Vertical" Margin="0,20,0,0">
                     <ToggleSwitch Header="Theme (restart required)" OnContent="Light" OffContent="Dark" Toggled="ToggleSwitch_Toggled" Loaded="ToggleSwitch_Loaded" Grid.Row="1"/>
+                    <ComboBox x:Name="IntervalInput" SelectionChanged="IntervalInput_SelectionChanged" Header="Show a new quote every*: " PlaceholderText="Choose interval" Margin="0,20,0,10">
+                        <x:String>30 seconds</x:String>
+                        <x:String>60 seconds</x:String>
+                        <x:String>120 seconds</x:String>
+                        <x:String>180 seconds</x:String>
+                        <x:String>240 seconds</x:String>
+                        <x:String>300 seconds</x:String>
+                    </ComboBox>
+                    <TextBlock Text="*The default interval is 60 seconds."/>
                     <StackPanel Margin="0,20,0,0">
                         <TextBlock Text="About" FontSize="40"/>
                         <TextBlock Text="" />

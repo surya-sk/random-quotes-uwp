@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,6 +24,7 @@ namespace RandomQuotesUWP
     /// </summary>
     public sealed partial class SettingsPage : Page
     {
+        ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         public SettingsPage()
         {
             this.InitializeComponent();
@@ -46,6 +48,12 @@ namespace RandomQuotesUWP
             {
                 this.Frame.GoBack();
             }
+        }
+
+        private void IntervalInput_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            localSettings.Values["interval"] = e.AddedItems[0].ToString();
+            Debug.WriteLine(e.AddedItems[0]);
         }
     }
 }

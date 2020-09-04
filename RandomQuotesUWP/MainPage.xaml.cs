@@ -21,6 +21,9 @@ using Windows.UI.Notifications;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Windows.UI.Composition;
 using System.ComponentModel;
+using Windows.Storage;
+using System.Diagnostics;
+using System.Net.NetworkInformation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -34,18 +37,33 @@ namespace RandomQuotesUWP
         Quotes quotes = new Quotes();
         HttpClient client;
         DispatcherTimer dispatcherTimer;
+        int interval = 60;
+        ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         bool ReadQuote;
         string url = "https://yourrandomquotes.herokuapp.com/quote";//tp://localhost:8081/quote";
+        bool IsNetworkAvailable;
         public MainPage()
         {
             this.InitializeComponent();
-            client = new HttpClient();
-            client.BaseAddress = new Uri(url);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            LoadQuote();
-            UpdateLiveTile();
-            DispatcherTimerSetup();
+            IsNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
+            if(!IsNetworkAvailable)
+            {
+                Quote.Text = "Looks like you're not connected to the internet. We can't get you quotes without the internet : (";
+                Quote.TextWrapping = TextWrapping.Wrap;
+            }
+            else
+            {
+                client = new HttpClient();
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                LoadQuote();
+                UpdateLiveTile();
+                string value = (string)localSettings.Values["interval"];
+                string[] temp = value.Split(' ');
+                interval = Convert.ToInt16(temp[0]);
+                DispatcherTimerSetup();
+            }
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
@@ -141,7 +159,7 @@ namespace RandomQuotesUWP
         {
             dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcher_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 60);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, interval);
             dispatcherTimer.Start();
 
         }
