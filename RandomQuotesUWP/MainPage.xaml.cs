@@ -84,7 +84,7 @@ namespace RandomQuotesUWP
         {
             MediaElement mediaElement = new MediaElement();
             var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
-            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(quotes.Quote);
+            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(quotes.Quote + " by " + quotes.By);
             mediaElement.SetSource(stream, stream.ContentType);
             mediaElement.Play();
         }
@@ -252,6 +252,11 @@ namespace RandomQuotesUWP
         private void ReadAloudButton_Unchecked(object sender, RoutedEventArgs e)
         {
             ReadQuote = false;
+        }
+
+        private void NextQuoteButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadQuote();
         }
     }
 }
