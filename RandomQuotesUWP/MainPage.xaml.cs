@@ -39,7 +39,7 @@ namespace RandomQuotesUWP
         DispatcherTimer dispatcherTimer;
         int interval = 60;
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-        bool ReadQuote;
+        public static bool ReadQuote;
         string url = "https://yourrandomquotes.herokuapp.com/quote";//tp://localhost:8081/quote";
         bool IsNetworkAvailable;
         public MainPage()
@@ -50,9 +50,15 @@ namespace RandomQuotesUWP
             {
                 Quote.Text = "Looks like you're not connected to the internet. We can't get you quotes without the internet : (";
                 Quote.TextWrapping = TextWrapping.Wrap;
+                NextQuoteButton.Visibility = Visibility.Collapsed;
+                ReadAloudButton.Visibility = Visibility.Collapsed;
             }
             else
             {
+                if(ReadQuote)
+                {
+                    ReadAloudButton.IsChecked = true;
+                }
                 client = new HttpClient();
                 client.BaseAddress = new Uri(url);
                 client.DefaultRequestHeaders.Accept.Clear();

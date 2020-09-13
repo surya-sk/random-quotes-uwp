@@ -29,6 +29,7 @@ namespace RandomQuotesUWP
         public SettingsPage()
         {
             this.InitializeComponent();
+            Debug.WriteLine(MainPage.ReadQuote);
             SelectedInterval = (string)localSettings.Values["interval"];
             if(SelectedInterval==null)
             {
