@@ -49,7 +49,7 @@
             <TextBlock Name="Author" Text="{Binding By}"/>
         </Grid>
         <CommandBar Grid.Row="2">
-            <AppBarButton x:Name="NextQuoteButton" Icon="Go" Label="Next Quote" Click="NextQuoteButton_Click"/>
+            <AppBarButton x:Name="NextQuoteButton" Icon="Forward" Label="Next Quote" Click="NextQuoteButton_Click"/>
             <AppBarToggleButton x:Name="ReadAloudButton" Icon="Volume" Label="Read Quote" Checked="ReadAloudButton_Checked" Unchecked="ReadAloudButton_Unchecked"/>
             <AppBarButton x:Name="RefreshButton" Icon="Refresh" Label="Refresh" Click="RefreshButton_Click" Visibility="Collapsed"/>
             <AppBarButton x:Name="SettingsButton" Icon="Setting" Label="Settings" Click="SettingsButton_Click"/>
