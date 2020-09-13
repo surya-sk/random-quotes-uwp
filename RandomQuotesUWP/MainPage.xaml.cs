@@ -48,6 +48,7 @@ namespace RandomQuotesUWP
             IsNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
             if(!IsNetworkAvailable)
             {
+                RefreshButton.Visibility = Visibility.Visible;
                 Quote.Text = "Looks like you're not connected to the internet. We can't get you quotes without the internet : (";
                 Quote.TextWrapping = TextWrapping.Wrap;
                 NextQuoteButton.Visibility = Visibility.Collapsed;
@@ -263,6 +264,11 @@ namespace RandomQuotesUWP
         private void NextQuoteButton_Click(object sender, RoutedEventArgs e)
         {
             LoadQuote();
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }
