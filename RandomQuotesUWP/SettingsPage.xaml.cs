@@ -64,10 +64,5 @@ namespace RandomQuotesUWP
             localSettings.Values["interval"] = e.AddedItems[0].ToString();
             Debug.WriteLine(e.AddedItems[0]);
         }
-
-        private void QuoteButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(MainPage));
-        }
     }
 }

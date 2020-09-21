@@ -36,7 +36,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
 
@@ -51,7 +50,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
+
                 <StackPanel Orientation="Vertical" Margin="0,20,0,0">
                     <ToggleSwitch Header="Theme (restart required)" OnContent="Light" OffContent="Dark" Toggled="ToggleSwitch_Toggled" Loaded="ToggleSwitch_Loaded" Grid.Row="1"/>
                     <ComboBox x:Name="IntervalInput" SelectionChanged="IntervalInput_SelectionChanged" Header="Show a new quote every*: "  Margin="0,20,0,10">
@@ -105,9 +104,5 @@
                 </StackPanel>
             </Grid>
         </ScrollViewer>
-
-        <CommandBar Grid.Row="2" x:Name="SettingsBar">
-            <AppBarButton x:Name="QuoteButton" Label="Quote Page" Icon="Message" Click="QuoteButton_Click"/>
-        </CommandBar>
     </Grid>
 </Page>
