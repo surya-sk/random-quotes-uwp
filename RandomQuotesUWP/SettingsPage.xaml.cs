@@ -51,19 +51,15 @@ namespace RandomQuotesUWP
             ((ToggleSwitch)sender).IsOn = App.Current.RequestedTheme == ApplicationTheme.Light;
         }
 
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            if(this.Frame.CanGoBack)
-            {
-                this.Frame.GoBack();
-            }
-        }
-
         private void IntervalInput_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             localSettings.Values["interval"] = e.AddedItems[0].ToString();
             Debug.WriteLine(e.AddedItems[0]);
+        }
+
+        private void QuoteButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }

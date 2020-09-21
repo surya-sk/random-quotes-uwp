@@ -36,12 +36,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-     
-        
+
+
         <StackPanel Orientation="Vertical">
-            <Button x:Name="BackButton" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" VerticalAlignment="Top" Content="&#xE0A6;" Click="BackButton_Click"/>
             <TextBlock Text="Settings" FontSize="56" Margin="20,20,0,20"/>
         </StackPanel>
 
@@ -105,5 +105,9 @@
                 </StackPanel>
             </Grid>
         </ScrollViewer>
+
+        <CommandBar Grid.Row="2" x:Name="SettingsBar">
+            <AppBarButton x:Name="QuoteButton" Label="Quote Page" Icon="Message" Click="QuoteButton_Click"/>
+        </CommandBar>
     </Grid>
 </Page>
