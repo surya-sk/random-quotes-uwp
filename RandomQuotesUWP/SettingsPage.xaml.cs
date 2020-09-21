@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -29,7 +30,9 @@ namespace RandomQuotesUWP
         public SettingsPage()
         {
             this.InitializeComponent();
-            Debug.WriteLine(MainPage.ReadQuote);
+            var view = SystemNavigationManager.GetForCurrentView();
+            view.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            view.BackRequested += View_BackRequested;
             SelectedInterval = (string)localSettings.Values["interval"];
             if(SelectedInterval==null)
             {
@@ -39,6 +42,11 @@ namespace RandomQuotesUWP
             {
                 IntervalInput.PlaceholderText = SelectedInterval;
             }
+        }
+
+        private void View_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
 
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)

@@ -24,6 +24,7 @@ using System.ComponentModel;
 using Windows.Storage;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
+using Windows.UI.Core;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -45,6 +46,7 @@ namespace RandomQuotesUWP
         public MainPage()
         {
             this.InitializeComponent();
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
             IsNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
             if(!IsNetworkAvailable)
             {
