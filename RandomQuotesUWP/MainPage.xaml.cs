@@ -43,6 +43,8 @@ namespace RandomQuotesUWP
         public static bool ReadQuote;
         string url = "https://yourrandomquotes.herokuapp.com/quote";//tp://localhost:8081/quote";
         bool IsNetworkAvailable;
+        MediaElement mediaElement = new MediaElement();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -91,7 +93,6 @@ namespace RandomQuotesUWP
         /// <param name="e"></param>
         private async void ReadAloud()
         {
-            MediaElement mediaElement = new MediaElement();
             var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
             Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync(quotes.Quote + " by " + quotes.By);
             mediaElement.SetSource(stream, stream.ContentType);
@@ -116,9 +117,7 @@ namespace RandomQuotesUWP
 
         async Task<Quotes> GetResponse()
         {
-
             quotes = await GetStringFromURL().ConfigureAwait(false);
-
             return quotes;
         }
 
@@ -137,7 +136,8 @@ namespace RandomQuotesUWP
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(By)));
                 }
             }
-            public string Quote { get => quote; set
+            public string Quote
+            { get => quote; set
                 {
                     quote = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Quote)));
@@ -162,6 +162,11 @@ namespace RandomQuotesUWP
             {
                 ReadAloud();
             }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            mediaElement.Pause();
         }
 
         /// <summary>
@@ -260,11 +265,13 @@ namespace RandomQuotesUWP
 
         private void ReadAloudButton_Unchecked(object sender, RoutedEventArgs e)
         {
+            mediaElement.Pause();
             ReadQuote = false;
         }
 
         private void NextQuoteButton_Click(object sender, RoutedEventArgs e)
         {
+            mediaElement.Pause();
             LoadQuote();
         }
 
