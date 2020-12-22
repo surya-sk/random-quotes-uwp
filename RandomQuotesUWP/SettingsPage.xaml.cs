@@ -46,7 +46,11 @@ namespace RandomQuotesUWP
 
         private void View_BackRequested(object sender, BackRequestedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            if(Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+            }
+            e.Handled = true;
         }
 
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
