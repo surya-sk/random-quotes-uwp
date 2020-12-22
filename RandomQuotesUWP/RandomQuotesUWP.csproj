@@ -18,7 +18,7 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <PackageCertificateKeyFile>RandomQuotesUWP_StoreKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>51325B83E1A4A3F52BD49DDEDE02719AC059BAE3</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>5F5925AE33985F7EE6573BDD0EACB912467F79EA</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
