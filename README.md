@@ -1,5 +1,5 @@
 ## Description
-This is the app version of the web project https://github.com/ryaliscs/randomQuotes
+This is the app version of the web project https://github.com/ryaliscs/randomQuotes. The quotes are not written by me.
 
 This app is a native Windows 10 application built with the UWP framework using XAML and C#
 
